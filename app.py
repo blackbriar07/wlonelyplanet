@@ -35,6 +35,8 @@ def callback():
 @handler.add(MessageEvent, message = TextMessage)
 def handle_text_message(event):
     text = (event.message.text).lower()
+    message = ImageSendMessage(original_content_url = 'https://upload.wikimedia.org//wikipedia//en//6//6b//Hello_Web_Series_%28Wordmark%29_Logo.png',
+                               preview_image_url = 'https://upload.wikimedia.org//wikipedia//en//6//6b//Hello_Web_Series_%28Wordmark%29_Logo.png')
     if 'hi' in text or 'hello' in text :
         profile = line_bot_api.get_profile(event.source.user_id)
         #if isinstance(event.source, SourceUser):
@@ -42,6 +44,7 @@ def handle_text_message(event):
             #line_bot_api.reply_message(event.reply_token, [ TextSendMessage(text='Display name: ' +profile.display_name),TextSendMessage(text='Status message: ' +profile.status_message)])
         #else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Hi "+ profile.display_name ))
+        line_bot_api.reply_message(event.reply_token, message)
     elif text == 'bye':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
     elif text == 'message':
