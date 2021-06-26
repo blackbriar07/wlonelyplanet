@@ -43,7 +43,7 @@ def handle_text_message(event):
         #else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Hi "+ profile.display_name + " " + profile.status_message))
     elif text == 'bye':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "leaving"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
 '''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
