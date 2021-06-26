@@ -35,8 +35,8 @@ def callback():
 @handler.add(MessageEvent, message = TextMessage)
 def handle_text_message(event):
     text = (event.message.text).lower()
-    message = ImageSendMessage(original_content_url = 'https://storystudio.tw/wp-content/uploads/2019/11/history-of-hello-feature-image.jpg',
-                               preview_image_url = 'https://storystudio.tw/wp-content/uploads/2019/11/history-of-hello-feature-image.jpg')
+    message = ImageSendMessage(original_content_url = 'https://image.freepik.com/free-vector/bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg',
+                               preview_image_url = 'https://image.freepik.com/free-vector/bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg')
     if 'hi' in text or 'hello' in text :
         profile = line_bot_api.get_profile(event.source.user_id)
         #if isinstance(event.source, SourceUser):
