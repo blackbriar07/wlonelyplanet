@@ -45,7 +45,7 @@ def handle_text_message(event):
     elif text == 'bye':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
     elif text == 'message':
-        line_bot_api.push_message('<to>', TextSendMessage(text = "hey !!! how are you people"))
+        line_bot_api.push_message(user_id, TextSendMessage(text = "hey !!! how are you people"))
 '''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
