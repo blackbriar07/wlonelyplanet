@@ -41,7 +41,7 @@ def handle_text_message(event):
             
             #line_bot_api.reply_message(event.reply_token, [ TextSendMessage(text='Display name: ' +profile.display_name),TextSendMessage(text='Status message: ' +profile.status_message)])
         #else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Hi "+ profile.display_name))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Hi "+ profile.display_name + " " + profile.status_message))
     elif text == 'bye':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "leaving"))
 '''
