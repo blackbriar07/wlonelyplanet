@@ -34,8 +34,8 @@ def callback():
 
 @handler.add(MessageEvent, message = TextMessage)
 def handle_text_message(event):
-    text = event.message.text
-    if text == 'hi' or text == 'hello' or text == 'Hello' or text == 'Hi':
+    text = (event.message.text).lower()
+    if 'hi' in text or 'hello' in text :
         profile = line_bot_api.get_profile(event.source.user_id)
         #if isinstance(event.source, SourceUser):
             
