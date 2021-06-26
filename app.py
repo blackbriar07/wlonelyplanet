@@ -50,6 +50,28 @@ def handle_text_message(event):
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
     elif text == 'message':
         line_bot_api.push_message(push_token, TextSendMessage(text = "hey !!! how are you people"))
+
+
+@handler.add(MessageEvent, message=LocationMessage)
+def handle_location_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        LocationSendMessage(
+            title='Location', address=event.message.address,
+            latitude=event.message.latitude, longitude=event.message.longitude
+        )
+    )
+
+@handler.add(MessageEvent, message=StickerMessage)
+def handle_sticker_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        StickerSendMessage(
+            package_id=event.message.package_id,
+            sticker_id=event.message.sticker_id)
+    )
+    
+
 '''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
