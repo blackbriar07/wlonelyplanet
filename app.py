@@ -41,7 +41,7 @@ def handle_text_message(event):
     templatemessage = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
-                                thumbnail_image_url='https://example.com/image.jpg',
+                                thumbnail_image_url='https://direct.rhapsody.com//imageserver//images//alb.298814091//500x500.jpg',
                                 title='Menu',
                                 text='Please select',
                                 actions=[
@@ -56,7 +56,7 @@ def handle_text_message(event):
                                     ),
                                     URITemplateAction(
                                         label='uri',
-                                        uri='http://example.com/'
+                                        uri='https://direct.rhapsody.com//'
                                     )
                                 ]
                             )
