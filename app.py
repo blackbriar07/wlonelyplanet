@@ -36,11 +36,12 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
     if text == 'profile':
-        if isinstance(event.source, SourceUser):
-            profile = line_bot_api.get_profile(event.source.user_id)
-            line_bot_api.reply_message(event.reply_token, [ TextSendMessage(text='Display name: ' +profile.display_name),TextSendMessage(text='Status message: ' +profile.status_message)])
-        else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Bot cant use profile API without user ID"))
+        profile = line_bot_api.get_profile(event.source.user_id)
+        #if isinstance(event.source, SourceUser):
+            
+            #line_bot_api.reply_message(event.reply_token, [ TextSendMessage(text='Display name: ' +profile.display_name),TextSendMessage(text='Status message: ' +profile.status_message)])
+        #else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Hi "+ profile.display_name))
     elif text == 'bye':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "leaving"))
 '''
