@@ -37,6 +37,30 @@ def handle_text_message(event):
     text = (event.message.text).lower()
     message = ImageSendMessage(original_content_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg',
                                preview_image_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg')
+    
+    templatemessage = TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                thumbnail_image_url='https://example.com/image.jpg',
+                                title='Menu',
+                                text='Please select',
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='postback',
+                                        text='postback text',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='message',
+                                        text='message text'
+                                    ),
+                                    URITemplateAction(
+                                        label='uri',
+                                        uri='http://example.com/'
+                                    )
+                                ]
+                            )
+                        )
     if 'hi' in text or 'hello' in text :
         profile = line_bot_api.get_profile(event.source.user_id)
         #if isinstance(event.source, SourceUser):
@@ -50,7 +74,9 @@ def handle_text_message(event):
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
     elif text == 'message':
         line_bot_api.push_message(push_token, TextSendMessage(text = "hey !!! how are you people"))
-
+    elif text == 'template':
+        line_bot_api.reply_message(event.reply_token, templatemessage)
+        
 
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
