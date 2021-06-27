@@ -105,7 +105,7 @@ def handle_image_message(event):
     message = ImageSendMessage(original_content_url = 'https://www.atlasandboots.com/wp-content/uploads/2019/05/ama-dablam2-most-beautiful-mountains-in-the-world.jpg',
                                preview_image_url = 'https://www.atlasandboots.com/wp-content/uploads/2019/05/ama-dablam2-most-beautiful-mountains-in-the-world.jpg')
     
-    line_bot_api.reply_message(event.reply_token, message)
+    line_bot_api.reply_message(event.reply_token,[TextSendMessage(text = "I am not being trained to understand you"), message])
     
     
 '''
