@@ -42,21 +42,21 @@ def handle_text_message(event):
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
                                 thumbnail_image_url='https://direct.rhapsody.com//imageserver//images//alb.298814091//500x500.jpg',
-                                title='Menu',
+                                title='Hangouts Menu',
                                 text='Please select',
                                 actions=[
                                     PostbackTemplateAction(
-                                        label='postback',
-                                        text='postback text',
+                                        label='Group hangouts',
+                                        text='Searching for group......',
                                         data='action=buy&itemid=1'
                                     ),
                                     MessageTemplateAction(
-                                        label='message',
-                                        text='message text'
+                                        label='Solo hangout',
+                                        text='Searching for a solo person'
                                     ),
                                     URITemplateAction(
-                                        label='uri',
-                                        uri='https://direct.rhapsody.com//'
+                                        label='listen to music',
+                                        uri='https://www.youtube.com/watch?v=xNV38nq1fqc&t=1850s//'
                                     )
                                 ]
                             )
@@ -72,7 +72,7 @@ def handle_text_message(event):
     elif 'bye' in text:
         line_bot_api.reply_message(event.reply_token, message)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
-    elif text == 'message':
+    elif 'message' in text:
         line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "hey !!! how are you people"))
     elif text == 'template':
         line_bot_api.reply_message(event.reply_token, templatemessage)
