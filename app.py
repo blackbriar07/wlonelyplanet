@@ -58,10 +58,9 @@ def handle_text_message(event):
                                         label='listen to music',
                                         uri='https://www.youtube.com/watch?v=xNV38nq1fqc&t=1850s//'
                                     )
-                                    {
-                                        type:'camera',
-                                        label:'Camera'
-                                    }                                        
+                                    CameraTemplateAction(
+                                        label='Camera'
+                                    ) 
                                          
                                 ]
                             )
