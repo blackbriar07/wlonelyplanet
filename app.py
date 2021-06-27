@@ -69,13 +69,15 @@ def handle_text_message(event):
         #else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Hi "+ profile.display_name ))
         
-    elif text == 'bye':
+    elif 'bye' in text:
         line_bot_api.reply_message(event.reply_token, message)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
     elif text == 'message':
-        line_bot_api.push_message(push_token, TextSendMessage(text = "hey !!! how are you people"))
+        line_bot_api.push_message(to, TextSendMessage(text = "hey !!! how are you people"))
     elif text == 'template':
         line_bot_api.reply_message(event.reply_token, templatemessage)
+    else :
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
         
 
 @handler.add(MessageEvent, message=LocationMessage)
@@ -98,6 +100,14 @@ def handle_sticker_message(event):
     )
     
 
+@handler.add(MessageEvent, message = ImageMessage)
+def handle_image_message(event):
+    message = ImageSendMessage(original_content_url = 'https://www.atlasandboots.com/wp-content/uploads/2019/05/ama-dablam2-most-beautiful-mountains-in-the-world.jpg',
+                               preview_image_url = 'https://www.atlasandboots.com/wp-content/uploads/2019/05/ama-dablam2-most-beautiful-mountains-in-the-world.jpg')
+    
+    line_bot_api.reply_message(event.reply_token, message)
+    
+    
 '''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
