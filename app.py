@@ -105,7 +105,7 @@ def handle_text_message(event):
                                             URITemplateAction(
                                                 label='Sports News',
                                                 uri='https://www.skysports.com/'
-                            )
+                            ),
                                  CarouselColumn(
                                         thumbnail_image_url='https://vgywm.com/wp-content/uploads/2019/07/apple-music-note-800x420.jpg',
                                         title='Music',
