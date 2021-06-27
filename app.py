@@ -69,48 +69,65 @@ def handle_text_message(event):
                             template=CarouselTemplate(
                                 columns=[
                                     CarouselColumn(
-                                        thumbnail_image_url='https://example.com/item1.jpg',
-                                        title='this is menu1',
-                                        text='description1',
+                                        thumbnail_image_url='https://dailyiowan.com/wp-content/uploads/2019/09/friends-900x600.jpeg',
+                                        title='Hangouts',
+                                        text='Want to hangout with a group or a solo person ..',
                                         actions=[
                                             PostbackTemplateAction(
-                                                label='postback1',
-                                                text='postback text1',
+                                                label='Group',
+                                                text='looking for a group..',
                                                 data='action=buy&itemid=1'
                                             ),
                                             MessageTemplateAction(
-                                                label='message1',
-                                                text='message text1'
+                                                label='Solo',
+                                                text='looking for a person..'
                                             ),
                                             URITemplateAction(
-                                                label='uri1',
-                                                uri='http://example.com/1'
+                                                label='Access facebooks',
+                                                uri='https://www.facebook.com/'
                                             )
                                         ]
                                     ),
                                     CarouselColumn(
-                                        thumbnail_image_url='https://example.com/item2.jpg',
-                                        title='this is menu2',
-                                        text='description2',
+                                        thumbnail_image_url='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-mobile-games-2020-1607968493.jpg',
+                                        title='Games',
+                                        text='Choose your online game',
                                         actions=[
                                             PostbackTemplateAction(
-                                                label='postback2',
-                                                text='postback text2',
+                                                label='Chess',
+                                                text='opening chess',
                                                 data='action=buy&itemid=2'
                                             ),
                                             MessageTemplateAction(
-                                                label='message2',
-                                                text='message text2'
+                                                label='Online soccer',
+                                                text='opening FIFA'
                                             ),
                                             URITemplateAction(
-                                                label='uri2',
-                                                uri='http://example.com/2'
+                                                label='Sports News',
+                                                uri='https://www.skysports.com/'
                             )
-                        ]
-                    )
-                ]
-            )
-        )
+                                 CarouselColumn(
+                                        thumbnail_image_url='https://vgywm.com/wp-content/uploads/2019/07/apple-music-note-800x420.jpg',
+                                        title='Music',
+                                        text='Choose your own music',
+                                        actions=[
+                                            URITemplateAction(
+                                                label='Rock Music',
+                                                uri='https://www.youtube.com/watch?v=26nsBfLXwSQ/'
+                                            ),
+                                           URITemplateAction(
+                                                label='Contemporary Music',
+                                                uri='https://www.youtube.com/watch?v=M6USc22nFnY/'
+                                            ),
+                                            URITemplateAction(
+                                                label='Soothing Music',
+                                                uri='https://www.youtube.com/watch?v=lFcSrYw-ARY/'
+                                            )
+                                        ]
+                                    )
+                                ]
+                            )
+                        )
     if 'hi' in text or 'hello' in text :
         profile = line_bot_api.get_profile(event.source.user_id)
         #if isinstance(event.source, SourceUser):
