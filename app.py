@@ -47,17 +47,22 @@ def handle_text_message(event):
                                 actions=[
                                     PostbackTemplateAction(
                                         label='Group hangouts',
-                                        text='Searching for group......',
+                                        text='looking for group......',
                                         data='action=buy&itemid=1'
                                     ),
                                     MessageTemplateAction(
                                         label='Solo hangout',
-                                        text='Searching for a solo person'
+                                        text='looking for a solo person'
                                     ),
                                     URITemplateAction(
                                         label='listen to music',
                                         uri='https://www.youtube.com/watch?v=xNV38nq1fqc&t=1850s//'
                                     )
+                                    {
+                                        type:'camera',
+                                        label:'Camera'
+                                    }                                        
+                                         
                                 ]
                             )
                         )
