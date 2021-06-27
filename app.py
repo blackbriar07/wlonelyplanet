@@ -37,8 +37,24 @@ def handle_text_message(event):
     text = (event.message.text).lower()
     message = ImageSendMessage(original_content_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg',
                                preview_image_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg')
-    
-    templatemessage = TemplateSendMessage(
+    confirmmessage = TemplateSendMessage(
+                            alt_text='Confirm template',
+                            template=ConfirmTemplate(
+                                text='Are you sure?',
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='postback',
+                                        text='postback text',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='message',
+                                        text='message text'
+                                    )
+                                ]
+                            )
+                        )
+    buttonmessage = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
                                 thumbnail_image_url='https://direct.rhapsody.com//imageserver//images//alb.298814091//500x500.jpg',
@@ -145,9 +161,11 @@ def handle_text_message(event):
     elif 'message' in text:
         line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "hey !!! how are you people"))
     elif text == 'template':
-        line_bot_api.reply_message(event.reply_token, templatemessage)
+        line_bot_api.reply_message(event.reply_token, buttonmessage)
     elif text == 'carousel':
         line_bot_api.reply_message(event.reply_token, message_carousel)
+    elif 'confirm' in text:
+        line_bot_api.reply_message(event.reply_token, confirmmessage)
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
         
