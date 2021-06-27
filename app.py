@@ -107,7 +107,27 @@ def handle_text_message(event):
                                                 uri='https://www.skysports.com/'
                                             )
                                         ]
-                                    )
+                                    ),
+                                    
+                                 CarouselColumn(
+                                        thumbnail_image_url='https://vgywm.com/wp-content/uploads/2019/07/apple-music-note-800x420.jpg',
+                                        title='Music',
+                                        text='Choose your own music',
+                                        actions=[
+                                            URITemplateAction(
+                                                label='Rock Music',
+                                                uri='https://www.youtube.com/watch?v=26nsBfLXwSQ/'
+                                            ),
+                                           URITemplateAction(
+                                                label='Contemporary Music',
+                                                uri='https://www.youtube.com/watch?v=M6USc22nFnY/'
+                                            ),
+                                            URITemplateAction(
+                                                label='Soothing Music',
+                                                uri='https://www.youtube.com/watch?v=lFcSrYw-ARY/'
+                                            )
+                                        ]
+                                 )
                                 ]
                             )
                         )
