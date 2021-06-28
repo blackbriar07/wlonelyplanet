@@ -37,6 +37,30 @@ def handle_text_message(event):
     text = (event.message.text).lower()
     message = ImageSendMessage(original_content_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg',
                                preview_image_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg')
+    
+    ImageCarouselmessage = TemplateSendMessage(
+                                alt_text='ImageCarousel template',
+                                template=ImageCarouselTemplate(
+                                    columns=[
+                                        ImageCarouselColumn(
+                                            image_url='https://example.com/item1.jpg',
+                                            action=PostbackTemplateAction(
+                                                label='postback1',
+                                                text='postback text1',
+                                                data='action=buy&itemid=1'
+                                            )
+                                        ),
+                                        ImageCarouselColumn(
+                                            image_url='https://example.com/item2.jpg',
+                                            action=PostbackTemplateAction(
+                                                label='postback2',
+                                                text='postback text2',
+                                                data='action=buy&itemid=2'
+                                            )
+                                        )
+                                    ]
+                                )
+                            )
     confirmmessage = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
@@ -166,6 +190,8 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, message_carousel)
     elif 'confirm' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage)
+    elif 'imagec' in text:
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
         
