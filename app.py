@@ -43,18 +43,18 @@ def handle_text_message(event):
                                 template=ImageCarouselTemplate(
                                     columns=[
                                         ImageCarouselColumn(
-                                            image_url='https://example.com/item1.jpg',
+                                            image_url='https://terrigen-cdn-dev.marvel.com/content/prod/1x/theavengers_lob_crd_03.jpg',
                                             action=PostbackTemplateAction(
-                                                label='postback1',
-                                                text='postback text1',
+                                                label='Avengers',
+                                                text='Calling avengers',
                                                 data='action=buy&itemid=1'
                                             )
                                         ),
                                         ImageCarouselColumn(
-                                            image_url='https://example.com/item2.jpg',
+                                            image_url='https://media.comicbook.com/2018/01/the-cw-arrowverse-1079043.jpeg',
                                             action=PostbackTemplateAction(
-                                                label='postback2',
-                                                text='postback text2',
+                                                label='DC',
+                                                text='Calling DC superheroes',
                                                 data='action=buy&itemid=2'
                                             )
                                         )
