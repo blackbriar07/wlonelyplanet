@@ -119,6 +119,29 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+    messageb = TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                thumbnail_image_url='https://example.com/image.jpg',
+                                title='Menu',
+                                text='Please select',
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='postback',
+                                        text='postback text',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='message',
+                                        text='message text'
+                                    ),
+                                    URITemplateAction(
+                                        label='uri',
+                                        uri='http://example.com/'
+                                    )
+                                ]
+                            )
+                        )
     buttonmessage = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
@@ -219,7 +242,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
         #line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
-        line_bot_api.reply_message(event.source.user_id, buttonmessage)
+        line_bot_api.reply_message(event.source.user_id, messageb)
     elif 'low' in text:
         line_bot_api.reply_message(event.source.user_id, confirmmessage1)
     elif 'bye' in text:
