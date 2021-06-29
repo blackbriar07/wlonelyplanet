@@ -142,7 +142,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
-    buttonmessage = TemplateSendMessage(
+    bmessage = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
                                 thumbnail_image_url='https://www.e-spincorp.com//wp-content//uploads//2017//10//industry-media-entertainment.jpg',
@@ -242,9 +242,9 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
         #line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
-        line_bot_api.reply_message(event.source.user_id, messageb)
+        line_bot_api.reply_message(event.reply_token, bmessage)
     elif 'low' in text:
-        line_bot_api.reply_message(event.source.user_id, confirmmessage1)
+        line_bot_api.reply_message(event.reply_token, confirmmessage1)
     elif 'bye' in text:
         line_bot_api.reply_message(event.reply_token, message)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
