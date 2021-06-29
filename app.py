@@ -254,7 +254,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "oh yes"))
         #line_bot_api.reply_message(event.reply_token, ImageCarouselmessage1)
     elif 'surely' in text:
-        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage1)
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     elif text == 'carousel':
         line_bot_api.reply_message(event.reply_token, message_carousel)
     elif 'confirm' in text:
