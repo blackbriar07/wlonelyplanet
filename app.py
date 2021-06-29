@@ -44,9 +44,9 @@ def handle_text_message(event):
                                 template=ImageCarouselTemplate(
                                     columns=[
                                         ImageCarouselColumn(
-                                            image_url='https://terrigen-cdn-dev.marvel.com/content/prod/1x/theavengers_lob_crd_03.jpg',
+                                            image_url='https://en.apkshki.com/storage/3832/icon_5eb5668be1fc9_3832.png',
                                             action=PostbackTemplateAction(
-                                                label='Avengers',
+                                                label='Avengers calling',
                                                 text='Calling avengers',
                                                 data='action=buy&itemid=1'
                                             )
