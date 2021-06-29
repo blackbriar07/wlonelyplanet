@@ -62,12 +62,13 @@ def handle_text_message(event):
                                     ]
                                 )
                             )
+    
     ImageCarouselmessage1 = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
                                 template=ImageCarouselTemplate(
                                     columns=[
                                         ImageCarouselColumn(
-                                            image_url='https://en.apkshki.com/storage/3832/icon_5eb5668be1fc9_3832.png',
+                                            image_url='https://mir-s3-cdn-cf.behance.net/projects/404/acfccd53353367.Y3JvcCwxMDAyLDc4NCwwLDEwNg.jpg',
                                             action=PostbackTemplateAction(
                                                 label='Truth and Dare',
                                                 text='The questions continue..',
@@ -75,7 +76,7 @@ def handle_text_message(event):
                                             )
                                         ),
                                         ImageCarouselColumn(
-                                            image_url='https://im.idiva.com/content/2020/Aug/2-58_5f33a6dab7e6e.jpg',
+                                            image_url='https://winn-hub.com/assets/img/content/gallery/large/701.jpg',
                                             action=PostbackTemplateAction(
                                                 label='Who knows who better',
                                                 text='The questions continue..',
