@@ -122,17 +122,17 @@ def handle_text_message(event):
     buttonmessage = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
-                                thumbnail_image_url='https://www.e-spincorp.com/wp-content/uploads/2017/10/industry-media-entertainment.jpg',
+                                thumbnail_image_url='https://www.e-spincorp.com//wp-content//uploads//2017//10//industry-media-entertainment.jpg',
                                 title='What would you like to do ? ..',
                                 text='That is Awesome. Please select',
                                 actions=[
                                     URITemplateAction(
-                                        label='Wach some Movies',
-                                        uri='https://www.netflix.com/tw-en/'
+                                        label='Watch some Movies',
+                                        uri='https://www.netflix.com//tw-en//'
                                     ),
                                     URITemplateAction(
                                         label='listen to music',
-                                        uri='https://www.youtube.com/watch?v=xNV38nq1fqc&t=1850s//'
+                                        uri='https://www.youtube.com//watch?v=xNV38nq1fqc&t=1850s//'
                                     ),
                                     PostbackTemplateAction(
                                         label='Chat with me',
@@ -218,11 +218,10 @@ def handle_text_message(event):
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
-        line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
-        #line_bot_api.reply_message(event.source.user_id, buttonmessage)
+        #line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
+        line_bot_api.reply_message(event.source.user_id, buttonmessage)
     elif 'low' in text:
-        line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
-        #line_bot_api.reply_message(event.source.user_id, confirmmessage1)
+        line_bot_api.reply_message(event.source.user_id, confirmmessage1)
     elif 'bye' in text:
         line_bot_api.reply_message(event.reply_token, message)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
