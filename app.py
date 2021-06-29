@@ -44,7 +44,7 @@ def handle_text_message(event):
                                 template=ImageCarouselTemplate(
                                     columns=[
                                         ImageCarouselColumn(
-                                            image_url='https://en.apkshki.com/storage/3832/icon_5eb5668be1fc9_3832.png',
+                                            image_url='https://is5-ssl.mzstatic.com/image/thumb/Purple124/v4/d5/6c/ad/d56cadca-8767-c011-2fa8-b374bff03bbb/source/512x512bb.jpg',
                                             action=PostbackTemplateAction(
                                                 label='Avengers calling',
                                                 text='Calling avengers',
@@ -52,7 +52,7 @@ def handle_text_message(event):
                                             )
                                         ),
                                         ImageCarouselColumn(
-                                            image_url='https://media.comicbook.com/2018/01/the-cw-arrowverse-1079043.jpeg',
+                                            image_url='https://winn-hub.com/assets/img/content/gallery/large/701.jpg',
                                             action=PostbackTemplateAction(
                                                 label='DC',
                                                 text='Calling DC superheroes',
