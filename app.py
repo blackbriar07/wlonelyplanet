@@ -250,7 +250,7 @@ def handle_text_message(event):
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
     elif 'message' in text:
         line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "hey !!! how are you people"))
-    elif text == 'I want to chat with you' or text == 'yes. I will surely do':
+    elif text == "I want to chat with you" or text == "yes. I will surely do":
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage1)
     elif text == 'carousel':
         line_bot_api.reply_message(event.reply_token, message_carousel)
