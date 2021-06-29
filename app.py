@@ -11,9 +11,9 @@ from linebot.models import *
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('yB+4MXrflMnpEU2r/MTU3Z2ArSwPUF+PSk8dQaWtJQiFhkuF7m2FrNPL4dleu6S77sEr7wBrblfKeosNFNd9eqbgIueG1znQpmZ+4IBp6YpZqtFejXMLyXRQLqkoRmH9pupTBym5SxUbIwg0FeeCkAdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('dN1gi/QZtPn2+UWb6zWrhTu5hajiWDoj7HLd4BCGdadKBYglFQZgvTO7iczyD7kn7sEr7wBrblfKeosNFNd9eqbgIueG1znQpmZ+4IBp6YojlPuEPfdQnbdA/6GOyRxbWgVUuDzuo5ue4K7bp8mgUAdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('c1521f858f78c1e8c952d4b944b6d89c')
+handler = WebhookHandler('afce8b885e6dbef844af6020a01490f8')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -35,6 +35,7 @@ def callback():
 @handler.add(MessageEvent, message = TextMessage)
 def handle_text_message(event):
     text = (event.message.text).lower()
+    profile = line_bot_api.get_profile(event.source.user_id)
     message = ImageSendMessage(original_content_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg',
                                preview_image_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg')
     
@@ -61,19 +62,59 @@ def handle_text_message(event):
                                     ]
                                 )
                             )
+    ImageCarouselmessage1 = TemplateSendMessage(
+                                alt_text='ImageCarousel template',
+                                template=ImageCarouselTemplate(
+                                    columns=[
+                                        ImageCarouselColumn(
+                                            image_url='https://en.apkshki.com/storage/3832/icon_5eb5668be1fc9_3832.png',
+                                            action=PostbackTemplateAction(
+                                                label='Truth and Dare',
+                                                text='The questions continue..',
+                                                data='action=buy&itemid=1'
+                                            )
+                                        ),
+                                        ImageCarouselColumn(
+                                            image_url='https://im.idiva.com/content/2020/Aug/2-58_5f33a6dab7e6e.jpg',
+                                            action=PostbackTemplateAction(
+                                                label='Who knows who better',
+                                                text='The questions continue..',
+                                                data='action=buy&itemid=2'
+                                            )
+                                        )
+                                    ]
+                                )
+                            )
     confirmmessage = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
-                                text='Are you sure?',
+                                text= "Hi "+ profile.display_name + ". What's up ? how are you feeling ?",
                                 actions=[
                                     PostbackTemplateAction(
-                                        label='postback',
-                                        text='postback text',
+                                        label='Great',
+                                        text='I am feeling great',
                                         data='action=buy&itemid=1'
                                     ),
                                     MessageTemplateAction(
-                                        label='message',
-                                        text='message text'
+                                        label='Not that great',
+                                        text='I am a little low. How was yours ?'
+                                    )
+                                ]
+                            )
+                        )
+    confirmmessage1 = TemplateSendMessage(
+                            alt_text='Confirm template',
+                            template=ConfirmTemplate(
+                                text= "Uhh... Not that great without you. Would you like to talk about it ? ",
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='Yes',
+                                        text='yes. I will surely do.',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='No',
+                                        text='Sorry. not in the mood.'
                                     )
                                 ]
                             )
@@ -81,25 +122,28 @@ def handle_text_message(event):
     buttonmessage = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
-                                thumbnail_image_url='https://direct.rhapsody.com//imageserver//images//alb.298814091//500x500.jpg',
-                                title='Hangouts Menu',
-                                text='Please select',
+                                thumbnail_image_url='https://www.e-spincorp.com/wp-content/uploads/2017/10/industry-media-entertainment.jpg',
+                                title='What would you like to do ? ..',
+                                text='That is Awesome. Please select',
                                 actions=[
-                                    PostbackTemplateAction(
-                                        label='Group hangouts',
-                                        text='looking for group......',
-                                        data='action=buy&itemid=1'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='Solo hangout',
-                                        text='looking for a solo person'
+                                    URITemplateAction(
+                                        label='Wach some Movies',
+                                        uri='https://www.netflix.com/tw-en/'
                                     ),
                                     URITemplateAction(
                                         label='listen to music',
                                         uri='https://www.youtube.com/watch?v=xNV38nq1fqc&t=1850s//'
-                                    )
-                                    
-                                         
+                                    ),
+                                    PostbackTemplateAction(
+                                        label='Chat with me',
+                                        text='I want to chat with you',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='Call a friend',
+                                        text='I want to call a friend'
+                                    )                                  
+                                                                             
                                 ]
                             )
                         )
@@ -172,20 +216,18 @@ def handle_text_message(event):
                             )
                         )
     if 'hi' in text or 'hello' in text :
-        profile = line_bot_api.get_profile(event.source.user_id)
-        #if isinstance(event.source, SourceUser):
-            
-            #line_bot_api.reply_message(event.reply_token, [ TextSendMessage(text='Display name: ' +profile.display_name),TextSendMessage(text='Status message: ' +profile.status_message)])
-        #else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Hi "+ profile.display_name ))
-        
+        line_bot_api.reply_message(event.reply_token, confirmmessage)
+    elif text == 'I am feeling great':
+        line_bot_api.reply_message(event.source.user_id, buttonmessage)
+    elif text == 'I am a little low. How was yours ?':
+        line_bot_api.reply_message(event.source.user_id, confirmmessage1)
     elif 'bye' in text:
         line_bot_api.reply_message(event.reply_token, message)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
     elif 'message' in text:
         line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "hey !!! how are you people"))
-    elif text == 'template':
-        line_bot_api.reply_message(event.reply_token, buttonmessage)
+    elif text == 'I want to chat with you' or text == 'yes. I will surely do':
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage1)
     elif text == 'carousel':
         line_bot_api.reply_message(event.reply_token, message_carousel)
     elif 'confirm' in text:
@@ -240,4 +282,3 @@ if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
     #app.run()
-
