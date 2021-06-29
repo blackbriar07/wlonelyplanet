@@ -44,15 +44,15 @@ def handle_text_message(event):
                                 template=ImageCarouselTemplate(
                                     columns=[
                                         ImageCarouselColumn(
-                                            image_url='https://is5-ssl.mzstatic.com/image/thumb/Purple124/v4/d5/6c/ad/d56cadca-8767-c011-2fa8-b374bff03bbb/source/512x512bb.jpg',
+                                            image_url='https://terrigen-cdn-dev.marvel.com/content/prod/1x/theavengers_lob_crd_03.jpg',
                                             action=PostbackTemplateAction(
-                                                label='Avengers calling',
+                                                label='Avengers',
                                                 text='Calling avengers',
                                                 data='action=buy&itemid=1'
                                             )
                                         ),
                                         ImageCarouselColumn(
-                                            image_url='https://winn-hub.com/assets/img/content/gallery/large/701.jpg',
+                                            image_url='https://media.comicbook.com/2018/01/the-cw-arrowverse-1079043.jpeg',
                                             action=PostbackTemplateAction(
                                                 label='DC',
                                                 text='Calling DC superheroes',
