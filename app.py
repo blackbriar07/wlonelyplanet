@@ -218,9 +218,11 @@ def handle_text_message(event):
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
-        line_bot_api.reply_message(event.source.user_id, buttonmessage)
+        line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
+        #line_bot_api.reply_message(event.source.user_id, buttonmessage)
     elif 'low' in text:
-        line_bot_api.reply_message(event.source.user_id, confirmmessage1)
+        line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
+        #line_bot_api.reply_message(event.source.user_id, confirmmessage1)
     elif 'bye' in text:
         line_bot_api.reply_message(event.reply_token, message)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
