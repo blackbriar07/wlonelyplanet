@@ -68,7 +68,7 @@ def handle_text_message(event):
                                 template=ImageCarouselTemplate(
                                     columns=[
                                         ImageCarouselColumn(
-                                            image_url='https://mir-s3-cdn-cf.behance.net/projects/404/acfccd53353367.Y3JvcCwxMDAyLDc4NCwwLDEwNg.jpg',
+                                            image_url='https://is5-ssl.mzstatic.com/image/thumb/Purple124/v4/d5/6c/ad/d56cadca-8767-c011-2fa8-b374bff03bbb/source/512x512bb.jpg',
                                             action=PostbackTemplateAction(
                                                 label='Truth and Dare',
                                                 text='The questions continue..',
