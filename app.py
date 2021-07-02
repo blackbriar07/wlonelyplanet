@@ -62,6 +62,29 @@ def handle_text_message(event):
                                     ]
                                 )
                             )
+    ImageCarouselmessage_health = TemplateSendMessage(
+                                alt_text='ImageCarousel template',
+                                template=ImageCarouselTemplate(
+                                    columns=[
+                                        ImageCarouselColumn(
+                                            image_url='https://images-na.ssl-images-amazon.com/images/I/71YfSBUDHYL._AC_SL1500_.jpg',
+                                            action=PostbackTemplateAction(
+                                                label='Blood pressure',
+                                                text='Thank you',
+                                                data='action=buy&itemid=1'
+                                            )
+                                        ),
+                                        ImageCarouselColumn(
+                                            image_url='https://5.imimg.com/data5/YT/QD/MY-41264905/blood-glucose-monitor-500x500.jpg',
+                                            action=PostbackTemplateAction(
+                                                label='Sugar Monitor',
+                                                text='Thank you',
+                                                data='action=buy&itemid=2'
+                                            )
+                                        )
+                                    ]
+                                )
+                            )
     
     ImageCarouselmessage1 = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
@@ -120,6 +143,24 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+
+    confirmmessage_great = TemplateSendMessage(
+                            alt_text='Confirm template',
+                            template=ConfirmTemplate(
+                                text= "Its good to hear that. You can spread your Happiness with others. Would you like to hangout with someone ?",
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='Yes',
+                                        text='I would surely like to hangout with others.',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='No',
+                                        text='Not right now'
+                                    )
+                                ]
+                            )
+                        )
     messageb = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
@@ -159,14 +200,10 @@ def handle_text_message(event):
                                         uri='https://www.youtube.com//watch?v=xNV38nq1fqc&t=1850s//'
                                     ),
                                     PostbackTemplateAction(
-                                        label='Chat with me',
-                                        text='I want to chat with you',
+                                        label='See your health status',
+                                        text='Health Status',
                                         data='action=buy&itemid=1'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='Call a friend',
-                                        text='I want to call a friend'
-                                    )                                  
+                                    )                               
                                                                              
                                 ]
                             )
@@ -242,8 +279,12 @@ def handle_text_message(event):
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
-        #line_bot_api.push_message(event.source.user_id, TextSendMessage(text = "I get it"))
+        line_bot_api.reply_message(event.reply_token, confirmmessage_great)
+        #line_bot_api.reply_message(event.reply_token, bmessage)
+    elif 'right' in text:
         line_bot_api.reply_message(event.reply_token, bmessage)
+    elif 'Health' in text:
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
     elif 'low' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage1)
     elif 'bye' in text:
