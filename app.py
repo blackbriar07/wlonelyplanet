@@ -446,12 +446,12 @@ def handle_text_message(event):
                                              URITemplateAction(
                                                 label='Consult a doctor',
                                                 uri='https://mdlnext.mdlive.com/'
-                                            ),
-                                           LocationSendMessage(
-                                               label = 'Doctor location',
-                                                title='Location', address=event.message.address,
-                                                latitude=event.message.latitude, longitude=event.message.longitude
-                                            )
+                                            ),                                            
+                                           PostbackTemplateAction(
+                                                label='Doctor Clinic',
+                                                text='Please click on the doctor clinic in the quick reply',
+                                                data='action=buy&itemid=2'
+                                            )                                         
                                             
                                         ]
                                  )
@@ -501,7 +501,6 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
-        
         
 
 @handler.add(MessageEvent, message=LocationMessage)
