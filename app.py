@@ -309,10 +309,10 @@ def handle_text_message(event):
                                 title='You can socialize physically or virtually. please select',
                                 text='That is Awesome. Please select',
                                 actions=[
-                                   PostbackTemplateAction(
+                                   MessageTemplateAction(
                                         label='Call a friend to hangout physically',
                                         text='Calling a friend',
-                                        data='action=buy&itemid=1'
+                                        
                                     ),
                                     URITemplateAction(
                                         label='Social Networking site',
@@ -427,10 +427,10 @@ def handle_text_message(event):
                                         title='Fever',
                                         text='Do you want medicine or doctor ?',
                                         actions=[
-                                            PostbackTemplateAction(
+                                            MessageTemplateAction(
                                                 label='Take temperature',
                                                 text='Your temperature is 90.6 F',
-                                                data='action=buy&itemid=2'
+                                                
                                             ),
                                             URITemplateAction(
                                                 label='Medicine online',
@@ -447,10 +447,10 @@ def handle_text_message(event):
                                         title='Cold/Cough',
                                         text='Do you want medicine or doctor ?',
                                         actions=[
-                                            PostbackTemplateAction(
+                                            MessageTemplateAction(
                                                 label='Take temperature',
                                                 text='Your temperature is 89.6 F',
-                                                data='action=buy&itemid=2'
+                                                
                                             ),
                                             URITemplateAction(
                                                 label='Medicine online',
@@ -472,10 +472,9 @@ def handle_text_message(event):
                                                 label='Consult a doctor',
                                                 uri='https://mdlnext.mdlive.com/'
                                             ),                                            
-                                           PostbackTemplateAction(
+                                           MessageTemplateAction(
                                                 label='Doctor Clinic',
                                                 text='Please click on the doctor clinic in the quick reply',
-                                                data='action=buy&itemid=2'
                                             )        
                                         ]
                                  )
