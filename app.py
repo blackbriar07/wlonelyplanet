@@ -109,27 +109,7 @@ def handle_text_message(event):
                                     ]
                                 )
                             )
-    ImageCarouselmeddoc = TemplateSendMessage(
-                                alt_text='ImageCarousel template',
-                                template=ImageCarouselTemplate(
-                                    columns=[
-                                        ImageCarouselColumn(
-                                            image_url='https://ichef.bbci.co.uk/news/976/cpsprodpb/15DA3/production/_115370598_tv038457905.jpg',
-                                            action=URITemplateAction(
-                                                    label='Medicine',
-                                                    uri='https://www.medlife.com/'
-                                            )
-                                        ),
-                                        ImageCarouselColumn(
-                                            image_url='https://bralowmedicalgroup.com/wp-content/uploads/2018/06/blog.jpg',
-                                            action=URITemplateAction(
-                                                    label='Doctor',
-                                                    uri='https://mdlnext.mdlive.com/'
-                                            )
-                                        )
-                                    ]
-                                )
-                            )
+    
     confirmmessage = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
@@ -389,6 +369,97 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+
+    ImageCarouselmeddoc = TemplateSendMessage(
+                                alt_text='ImageCarousel template',
+                                template=ImageCarouselTemplate(
+                                    columns=[
+                                        ImageCarouselColumn(
+                                            image_url='https://ichef.bbci.co.uk/news/976/cpsprodpb/15DA3/production/_115370598_tv038457905.jpg',
+                                            action=URITemplateAction(
+                                                    label='Medicine',
+                                                    uri='https://www.medlife.com/'
+                                            )
+                                        ),
+                                        ImageCarouselColumn(
+                                            image_url='https://bralowmedicalgroup.com/wp-content/uploads/2018/06/blog.jpg',
+                                            action=URITemplateAction(
+                                                    label='Doctor',
+                                                    uri='https://mdlnext.mdlive.com/'
+                                            )
+                                        )
+                                    ]
+                                )
+                            )
+
+    message_sick = TemplateSendMessage(
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(
+                                columns=[
+                                    CarouselColumn(
+                                        thumbnail_image_url='https://medlineplus.gov/images/Fever.jpg',
+                                        title='Fever',
+                                        text='Do you want medicine or doctor ?',
+                                        actions=[
+                                            PostbackTemplateAction(
+                                                label='Take temperature',
+                                                text='Your temperature is 90.6 F',
+                                                data='action=buy&itemid=2'
+                                            ),
+                                            URITemplateAction(
+                                                label='Medicine online',
+                                                uri='https://www.netmeds.com/prescriptions/dolo-650mg-tablet-15-s'
+                                            ),
+                                            URITemplateAction(
+                                                label='Consult a doctor',
+                                                uri='https://mdlnext.mdlive.com/'
+                                            )
+                                            
+                                        ]
+                                    ),
+                                    CarouselColumn(
+                                        thumbnail_image_url='https://sobeyspharmacy.com/wp-content/uploads/2016/03/CoughCold-page.png',
+                                        title='Cold/Cough',
+                                        text='Do you want medicine or doctor ?',
+                                        actions=[
+                                            PostbackTemplateAction(
+                                                label='Take temperature',
+                                                text='Your temperature is 89.6 F',
+                                                data='action=buy&itemid=2'
+                                            ),
+                                            URITemplateAction(
+                                                label='Medicine online',
+                                                uri='https://www.netmeds.com/prescriptions/cold-nova-capsule-10-s'
+                                            ),
+                                            URITemplateAction(
+                                                label='Consult a doctor',
+                                                uri='https://mdlnext.mdlive.com/'
+                                            )
+                                        ]
+                                    ),
+                                    
+                                 CarouselColumn(
+                                        thumbnail_image_url='https://vgywm.com/wp-content/uploads/2019/07/apple-music-note-800x420.jpg',
+                                        title='Others',
+                                        text='Please visit a doctor or consult one',
+                                        actions=[
+                                             URITemplateAction(
+                                                label='Consult a doctor',
+                                                uri='https://mdlnext.mdlive.com/'
+                                            ),
+                                           LocationSendMessage(
+                                               label = 'Doctor location',
+                                                title='Location', address=event.message.address,
+                                                latitude=event.message.latitude, longitude=event.message.longitude
+                                            )
+                                            
+                                        ]
+                                 )
+                                ]
+                            )
+                        )
+    
+    
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
@@ -405,7 +476,7 @@ def handle_text_message(event):
     elif text == 'not sick':
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
     elif text == 'sick' :
-        line_bot_api.reply_message(event.reply_token, ImageCarouselmeddoc)
+        line_bot_api.reply_message(event.reply_token, message_sick)
     elif text == 'stressed' :
         line_bot_api.reply_message(event.reply_token, message_stressed)
     elif text == 'not stressed':
