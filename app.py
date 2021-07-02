@@ -39,6 +39,7 @@ def handle_text_message(event):
     message = ImageSendMessage(original_content_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg',
                                preview_image_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg')
     
+
     quick_reply = QuickReply(
         items=[
             QuickReplyButton(action=MessageAction(label="Measure my vitals", text="Measuring using sensor")),
@@ -53,11 +54,14 @@ def handle_text_message(event):
             QuickReplyButton(
                 action=URIAction(
                     label="Share",
-                    uri='https://mdlnext.mdlive.com/')
+                    uri='https://engineering.linecorp.com/zh-hant/blog/')
             )
         ])
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text, quick_reply=quick_reply)
+    )
     
-   
     ImageCarouselmessage = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
                                 template=ImageCarouselTemplate(
@@ -167,7 +171,7 @@ def handle_text_message(event):
                         )
     '''
 
-    confirmmessage_great = TemplateSendMessage(
+    confirmmessage_notgreat = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
                                 text= "Sorry to hear that. Would you like to talk about it ?",
@@ -184,7 +188,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
-    confirmmessage_notgreat = TemplateSendMessage(
+    confirmmessage_great = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
                                 text= "Its good to hear that. You can spread your Happiness with others. Would you like to hangout with someone ?",
@@ -568,7 +572,8 @@ def handle_text_message(event):
                             )
                         )
     '''
-    #line_bot_api.reply_message(event.reply_token,TextSendMessage(text = event.message.text, quick_reply=quick_reply))
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text = event.message.text, quick_reply=quick_reply))
+    
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'feeling' in text and 'great' in text:
@@ -578,7 +583,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, bmessage)
     elif 'health' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
-    elif text == 'not great':
+    elif 'not' in text and 'great' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage_notgreat)
     elif text == 'yes':
         line_bot_api.reply_message(event.reply_token, confirmmessage_sick)
@@ -610,12 +615,10 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'imagec' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
-    elif text=='quick':
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text, quick_reply=quick_reply))
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
-        
 
+        
 @handler.add(MessageEvent, message=LocationMessage)
 def handle_location_message(event):
     line_bot_api.reply_message(
