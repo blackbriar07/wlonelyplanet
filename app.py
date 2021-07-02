@@ -185,6 +185,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+
     confirmmessage_great = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
@@ -321,7 +322,7 @@ def handle_text_message(event):
                                         label='Reminder Alert',
                                         text='reminder',
                                         data='action=buy&itemid=1'
-                                    )                                
+                                    )                          
                                                                              
                                 ]
                             )
@@ -334,11 +335,11 @@ def handle_text_message(event):
                                 title='You can socialize physically or virtually. please select',
                                 text='That is Awesome. Please select',
                                 actions=[
-                                   MessageTemplateAction(
-                                        label='Call a friend to hangout physically',
-                                        text='Calling a friend',
+                                   #MessageTemplateAction(
+                                    #    label='Call a friend to hangout physically',
+                                    #    text='Calling a friend',
                                         
-                                    ),
+                                    #),
                                     URITemplateAction(
                                         label='Social Networking site',
                                         uri='https://www.facebook.com/'
@@ -616,6 +617,259 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     elif 'surely' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
+    elif text == 'reminder':
+        output = FlexSendMessage(alt_text='reminder',
+                contents ={
+        "type": "carousel",
+        "contents": [
+            {
+            "type": "bubble",
+            "size": "nano",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Reminder 1",
+                    "color": "#ffffff",
+                    "align": "start",
+                    "size": "md",
+                    "gravity": "center"
+                },
+                {
+                    "type": "text",
+                    "text": "Medication",
+                    "color": "#ffffff",
+                    "align": "start",
+                    "size": "md",
+                    "gravity": "center",
+                    "margin": "none"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                        {
+                            "type": "filler"
+                        }
+                        ],
+                        "width": "70%",
+                        "backgroundColor": "#0D8186",
+                        "height": "6px"
+                    }
+                    ],
+                    "backgroundColor": "#9FD8E36E",
+                    "height": "6px",
+                    "margin": "sm"
+                }
+                ],
+                "backgroundColor": "#27ACB2",
+                "paddingTop": "19px",
+                "paddingAll": "12px",
+                "paddingBottom": "16px"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "Take your medicines before lunch.",
+                        "color": "#8C8C8C",
+                        "size": "md",
+                        "wrap": true
+                    }
+                    ],
+                    "flex": 1
+                }
+                ],
+                "spacing": "md",
+                "paddingAll": "12px"
+            },
+            "styles": {
+                "footer": {
+                "separator": false
+                }
+            }
+            },
+            {
+            "type": "bubble",
+            "size": "nano",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Reminder 2",
+                    "color": "#ffffff",
+                    "align": "start",
+                    "size": "md",
+                    "gravity": "center"
+                },
+                {
+                    "type": "text",
+                    "text": "Appointments",
+                    "color": "#ffffff",
+                    "align": "start",
+                    "size": "xs",
+                    "gravity": "center",
+                    "margin": "lg"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                        {
+                            "type": "filler"
+                        }
+                        ],
+                        "width": "50%",
+                        "backgroundColor": "#DE5658",
+                        "height": "6px"
+                    }
+                    ],
+                    "backgroundColor": "#FAD2A76E",
+                    "height": "6px",
+                    "margin": "sm"
+                }
+                ],
+                "backgroundColor": "#FF6B6E",
+                "paddingTop": "19px",
+                "paddingAll": "12px",
+                "paddingBottom": "16px"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "Doctor's appointment at 2:00 pm.",
+                        "color": "#8C8C8C",
+                        "size": "md",
+                        "wrap": true,
+                        "offsetTop": "xs",
+                        "offsetBottom": "xxl"
+                    }
+                    ],
+                    "flex": 1
+                }
+                ],
+                "spacing": "md",
+                "paddingAll": "12px"
+            },
+            "styles": {
+                "footer": {
+                "separator": false
+                }
+            }
+            },
+            {
+            "type": "bubble",
+            "size": "nano",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "text",
+                    "text": "Reminder 3",
+                    "color": "#ffffff",
+                    "align": "start",
+                    "size": "md",
+                    "gravity": "center"
+                },
+                {
+                    "type": "text",
+                    "text": "yoga",
+                    "color": "#ffffff",
+                    "align": "start",
+                    "size": "xs",
+                    "gravity": "center",
+                    "margin": "lg"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                        {
+                            "type": "filler"
+                        }
+                        ],
+                        "width": "100%",
+                        "backgroundColor": "#7D51E4",
+                        "height": "6px"
+                    }
+                    ],
+                    "backgroundColor": "#9FD8E36E",
+                    "height": "6px",
+                    "margin": "sm"
+                }
+                ],
+                "backgroundColor": "#A17DF5",
+                "paddingTop": "19px",
+                "paddingAll": "12px",
+                "paddingBottom": "16px"
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "Its yoga time",
+                        "color": "#8C8C8C",
+                        "size": "md",
+                        "wrap": true,
+                        "position": "absolute",
+                        "action": {
+                        "type": "datetimepicker",
+                        "label": "action",
+                        "data": "hello",
+                        "mode": "date"
+                        }
+                    }
+                    ],
+                    "flex": 1
+                }
+                ],
+                "spacing": "md",
+                "paddingAll": "12px"
+            },
+            "styles": {
+                "footer": {
+                "separator": false
+                }
+            }
+            }
+        ]
+        })
     elif text == 'carousel':
         line_bot_api.reply_message(event.reply_token, message_carousel)
     elif 'confirm' in text:
