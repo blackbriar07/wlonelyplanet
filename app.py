@@ -121,11 +121,12 @@ def handle_text_message(event):
                                     ),
                                     MessageTemplateAction(
                                         label='Not that great',
-                                        text='I am a little low. How was yours ?'
+                                        text='Sorry to hear that. Would you like to talk about it ? Answer in Yes/No '
                                     )
                                 ]
                             )
                         )
+    '''
     confirmmessage1 = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
@@ -143,6 +144,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+    '''
 
     confirmmessage_great = TemplateSendMessage(
                             alt_text='Confirm template',
@@ -161,6 +163,59 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+    confirmmessage_sick = TemplateSendMessage(
+                            alt_text='Confirm template',
+                            template=ConfirmTemplate(
+                                text= "Are you feeling sick ? ",
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='Yes',
+                                        text='sick',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='No',
+                                        text='Not sick'
+                                    )
+                                ]
+                            )
+                        )
+    confirmmessage_stressed = TemplateSendMessage(
+                            alt_text='Confirm template',
+                            template=ConfirmTemplate(
+                                text= "Are you feeling stressed ?",
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='Yes',
+                                        text='Stressed',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='No',
+                                        text='Not stressed'
+                                    )
+                                ]
+                            )
+                        )
+
+    confirmmessage_lonely = TemplateSendMessage(
+                            alt_text='Confirm template',
+                            template=ConfirmTemplate(
+                                text= "Are you feeling lonely ?",
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='Yes',
+                                        text='lonely',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='No',
+                                        text='Not lonely'
+                                    )
+                                ]
+                            )
+                        )
+    
     messageb = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
@@ -281,14 +336,18 @@ def handle_text_message(event):
     elif 'great' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage_great)
         #line_bot_api.reply_message(event.reply_token, bmessage)
-    elif 'Not' in text:
+    elif 'right' in text:
         line_bot_api.reply_message(event.reply_token, bmessage)
-    elif 'Health' in text:
+    elif 'health' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
+    elif text == 'yes':
+        line_bot_api.reply_message(event.reply_token, confirmmessage_sick)
+    elif text == 'sick':
+        line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
+    elif text == 'lonely':
+        line_bot_api.reply_message(event.reply_token, confirmmessage_lonely)
     elif 'hangout' in text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Please click the virtual camera option to virtually meet friends"))
-    elif 'low' in text:
-        line_bot_api.reply_message(event.reply_token, confirmmessage1)
     elif 'bye' in text:
         line_bot_api.reply_message(event.reply_token, message)
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "See you soon"))
@@ -307,6 +366,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
+        
         
 
 @handler.add(MessageEvent, message=LocationMessage)
