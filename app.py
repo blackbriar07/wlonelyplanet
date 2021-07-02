@@ -690,7 +690,7 @@ def handle_text_message(event):
                         "text": "Take your medicines before lunch.",
                         "color": "#8C8C8C",
                         "size": "md",
-                        "wrap": true
+                        "wrap": True
                     }
                     ],
                     "flex": 1
@@ -701,7 +701,7 @@ def handle_text_message(event):
             },
             "styles": {
                 "footer": {
-                "separator": false
+                "separator": False
                 }
             }
             },
@@ -769,7 +769,7 @@ def handle_text_message(event):
                         "text": "Doctor's appointment at 2:00 pm.",
                         "color": "#8C8C8C",
                         "size": "md",
-                        "wrap": true,
+                        "wrap": True,
                         "offsetTop": "xs",
                         "offsetBottom": "xxl"
                     }
@@ -782,7 +782,7 @@ def handle_text_message(event):
             },
             "styles": {
                 "footer": {
-                "separator": false
+                "separator": False
                 }
             }
             },
@@ -850,7 +850,7 @@ def handle_text_message(event):
                         "text": "Its yoga time",
                         "color": "#8C8C8C",
                         "size": "md",
-                        "wrap": true,
+                        "wrap": True,
                         "position": "absolute",
                         "action": {
                         "type": "datetimepicker",
@@ -868,14 +868,14 @@ def handle_text_message(event):
             },
             "styles": {
                 "footer": {
-                "separator": false
+                "separator": False
                 }
             }
             }
         ]
         })
-    elif text == 'carousel':
-        line_bot_api.reply_message(event.reply_token, message_carousel)
+    #elif text == 'carousel':
+    #    line_bot_api.reply_message(event.reply_token, message_carousel)
     elif 'confirm' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'imagec' in text:
