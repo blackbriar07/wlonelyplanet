@@ -192,12 +192,12 @@ def handle_text_message(event):
                                 actions=[
                                     PostbackTemplateAction(
                                         label='Yes',
-                                        text='yes',
+                                        text='hangout',
                                         data='action=buy&itemid=1'
                                     ),
                                     MessageTemplateAction(
                                         label='No',
-                                        text='no'
+                                        text='no hangout'
                                     )
                                 ]
                             )
@@ -576,13 +576,13 @@ def handle_text_message(event):
     elif text == 'quick':
         line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text, quick_reply=quick_reply)
-    )
+        TextSendMessage(text=event.message.text, quick_reply=quick_reply))
     elif 'feeling' in text and 'great' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage_great)
-        #line_bot_api.reply_message(event.reply_token, bmessage)
     elif 'right' in text:
         line_bot_api.reply_message(event.reply_token, bmessage)
+    elif 'no' in text and 'hangout' in text:
+        line_bot_api.reply_message(event.reply_token, message_stressed)
     elif 'health' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
     elif 'not' in text and 'great' in text:
