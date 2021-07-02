@@ -344,7 +344,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage_sick)
     elif text == 'sick':
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
-    elif text == 'lonely':
+    elif text == 'stressed':
         line_bot_api.reply_message(event.reply_token, confirmmessage_lonely)
     elif 'hangout' in text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Please click the virtual camera option to virtually meet friends"))
