@@ -318,8 +318,8 @@ def handle_text_message(event):
                                                 data='action=buy&itemid=1'
                                             ),
                                             MessageTemplateAction(
-                                                label='Solo',
-                                                text='Calling a friend'
+                                                label='Reminder Alert',
+                                                text='reminder'
                                             ),
                                             URITemplateAction(
                                                 label='Access facebooks',
