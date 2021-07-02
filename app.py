@@ -571,7 +571,7 @@ def handle_text_message(event):
     #line_bot_api.reply_message(event.reply_token,TextSendMessage(text = event.message.text, quick_reply=quick_reply))
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
-    elif text == 'I am feeling great':
+    elif text == 'i am feeling great':
         line_bot_api.reply_message(event.reply_token, confirmmessage_great)
         #line_bot_api.reply_message(event.reply_token, bmessage)
     elif 'right' in text:
