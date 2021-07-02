@@ -301,6 +301,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+
     message_lonely = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
@@ -326,7 +327,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
-   
+    '''
     message_carousel = TemplateSendMessage(
                             alt_text='Carousel template',
                             template=CarouselTemplate(
@@ -394,7 +395,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
-
+    '''
     ImageCarouselmeddoc = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
                                 template=ImageCarouselTemplate(
@@ -416,7 +417,72 @@ def handle_text_message(event):
                                     ]
                                 )
                             )
-
+    
+    message_sick = TemplateSendMessage(
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(
+                                columns=[
+                                    CarouselColumn(
+                                        thumbnail_image_url='https://dailyiowan.com/wp-content/uploads/2019/09/friends-900x600.jpeg',
+                                        title='Fever',
+                                        text='Do you want medicine or doctor ?',
+                                        actions=[
+                                            PostbackTemplateAction(
+                                                label='Take temperature',
+                                                text='Your temperature is 90.6 F',
+                                                data='action=buy&itemid=2'
+                                            ),
+                                            URITemplateAction(
+                                                label='Medicine online',
+                                                uri='https://www.netmeds.com/prescriptions/dolo-650mg-tablet-15-s'
+                                            ),
+                                            URITemplateAction(
+                                                label='Consult a doctor',
+                                                uri='https://mdlnext.mdlive.com/'
+                                            )
+                                        ]
+                                    ),
+                                    CarouselColumn(
+                                        thumbnail_image_url='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-mobile-games-2020-1607968493.jpg',
+                                        title='Cold/Cough',
+                                        text='Do you want medicine or doctor ?',
+                                        actions=[
+                                            PostbackTemplateAction(
+                                                label='Take temperature',
+                                                text='Your temperature is 89.6 F',
+                                                data='action=buy&itemid=2'
+                                            ),
+                                            URITemplateAction(
+                                                label='Medicine online',
+                                                uri='https://www.netmeds.com/prescriptions/cold-nova-capsule-10-s'
+                                            ),
+                                            URITemplateAction(
+                                                label='Consult a doctor',
+                                                uri='https://mdlnext.mdlive.com/'
+                                            )
+                                        ]
+                                    ),
+                                    
+                                 CarouselColumn(
+                                        thumbnail_image_url='https://vgywm.com/wp-content/uploads/2019/07/apple-music-note-800x420.jpg',
+                                        title='Others',
+                                        text='Please visit a doctor or consult one',
+                                        actions=[
+                                            URITemplateAction(
+                                                label='Consult a doctor',
+                                                uri='https://mdlnext.mdlive.com/'
+                                            ),                                            
+                                           PostbackTemplateAction(
+                                                label='Doctor Clinic',
+                                                text='Please click on the doctor clinic in the quick reply',
+                                                data='action=buy&itemid=2'
+                                            )        
+                                        ]
+                                 )
+                                ]
+                            )
+                        )
+    '''
     message_sick = TemplateSendMessage(
                             alt_text='Carousel template',
                             template=CarouselTemplate(
@@ -483,7 +549,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
-    
+    '''
     
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
@@ -501,7 +567,7 @@ def handle_text_message(event):
     elif text == 'not sick':
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
     elif text == 'sick' :
-        line_bot_api.reply_message(event.reply_token, message_carousel)
+        line_bot_api.reply_message(event.reply_token, message_sick)
     elif text == 'stressed' :
         line_bot_api.reply_message(event.reply_token, message_stressed)
     elif text == 'not stressed':
