@@ -210,7 +210,7 @@ def handle_text_message(event):
                                 actions=[
                                     PostbackTemplateAction(
                                         label='Yes',
-                                        text='high',
+                                        text='sick',
                                         data='action=buy&itemid=1'
                                     ),
                                     MessageTemplateAction(
@@ -586,8 +586,8 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage_notgreat)
     elif text == 'yes':
         line_bot_api.reply_message(event.reply_token, confirmmessage_sick)
-    elif text == 'high' :
-        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
+    elif text == 'sick' :
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmeddoc)
     elif text == 'not sick':
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
       
@@ -610,7 +610,7 @@ def handle_text_message(event):
         #line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "oh yes"))
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     elif 'surely' in text:
-        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmeddoc)
     
     elif text == 'reminder':
         output = FlexSendMessage(alt_text='reminder',
