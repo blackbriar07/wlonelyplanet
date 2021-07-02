@@ -679,7 +679,7 @@ def handle_text_message(event):
     elif 'imagec' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     else :
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text, quick_reply=quick_reply))
   
  
 
