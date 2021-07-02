@@ -501,7 +501,7 @@ def handle_text_message(event):
     elif text == 'not sick':
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
     elif text == 'sick' :
-        line_bot_api.reply_message(event.reply_token, message_sick)
+        line_bot_api.reply_message(event.reply_token, message_carousel)
     elif text == 'stressed' :
         line_bot_api.reply_message(event.reply_token, message_stressed)
     elif text == 'not stressed':
