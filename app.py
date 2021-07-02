@@ -302,6 +302,25 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+    message_stressed = TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                thumbnail_image_url='https://www.e-spincorp.com//wp-content//uploads//2017//10//industry-media-entertainment.jpg',
+                                title='What would you like to do ? ..',
+                                text='That is Awesome. Please select',
+                                actions=[
+                                    URITemplateAction(
+                                        label='Watch some Movies',
+                                        uri='https://www.netflix.com//tw-en//'
+                                    ),
+                                    URITemplateAction(
+                                        label='listen to music',
+                                        uri='https://www.youtube.com//watch?v=xNV38nq1fqc&t=1850s//'
+                                    )                            
+                                                                             
+                                ]
+                            )
+                        )
    
     message_carousel = TemplateSendMessage(
                             alt_text='Carousel template',
@@ -387,7 +406,9 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
     elif text == 'sick' :
         line_bot_api.reply_message(event.reply_token, ImageCarouselmeddoc)
-    elif text == 'stressed' or text == 'not stressed':
+    elif text == 'stressed' :
+        line_bot_api.reply_message(event.reply_token, message_stressed)
+    elif text == 'not stressed':
         line_bot_api.reply_message(event.reply_token, confirmmessage_lonely)
     elif 'hangout' in text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Please click the virtual camera option to virtually meet friends"))
