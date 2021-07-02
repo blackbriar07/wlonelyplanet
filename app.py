@@ -56,10 +56,7 @@ def handle_text_message(event):
                     uri='https://mdlnext.mdlive.com/')
             )
         ])
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text, quick_reply=quick_reply)
-    )
+    
    
     ImageCarouselmessage = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
@@ -613,6 +610,8 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'imagec' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
+    elif text=='quick':
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text, quick_reply=quick_reply))
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
         
