@@ -40,11 +40,27 @@ def handle_text_message(event):
                                preview_image_url = 'https://image.freepik.com//free-vector//bye-bye-flag-grahpic-old-vintage-trendy-flag-with-text-bye-bye-vintage-banner-with-ribbon-flag-grahpic-hand-drawn_136321-1593.jpg')
     
     quick_reply = QuickReply(
-                        items = [QuickReplyButton(action=DatetimePickerAction(label="Doctor time",data="storeId=12345",mode="datetime",)),
-                                  QuickReplyButton(action=CameraAction(label="virtual Hangout Camera")),
-                                  QuickReplyButton(action=CameraRollAction(label="Camera Roll")),
-                                  QuickReplyButton(action=URIAction(label='Doctor location',uri='https://mdlnext.mdlive.com/'))])
-    
+        items=[
+            QuickReplyButton(action=MessageAction(label="Measure my vitals", text="Measuring using sensor")),
+            QuickReplyButton(action=DatetimePickerAction(
+                label="Doctor time",
+                data="storeId=12345",
+                mode="datetime",)),
+            QuickReplyButton(action=CameraAction(label="Virtal HangoutCamera")),
+            QuickReplyButton(action=CameraRollAction(label="Camera Roll")),
+            QuickReplyButton(action=LocationAction(label="Doctor location")),
+            
+            QuickReplyButton(
+                action=URIAction(
+                    label="Share",
+                    uri='https://mdlnext.mdlive.com/')
+            )
+        ])
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text, quick_reply=quick_reply)
+    )
+   
     ImageCarouselmessage = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
                                 template=ImageCarouselTemplate(
@@ -555,7 +571,7 @@ def handle_text_message(event):
                             )
                         )
     '''
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text = event.message.text, quick_reply=quick_reply))
+    #line_bot_api.reply_message(event.reply_token,TextSendMessage(text = event.message.text, quick_reply=quick_reply))
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
