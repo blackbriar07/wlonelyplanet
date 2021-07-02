@@ -331,24 +331,23 @@ def handle_text_message(event):
     message_lonely = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
-                                thumbnail_image_url='https://www.relocationsrs.com.mx/wp-content/uploads/2019/11/blog3-720x340.jpg',
-                                title='You can socialize physically or virtually. please select',
-                                text='That is Awesome. Please select',
+                                thumbnail_image_url='https://www.e-spincorp.com//wp-content//uploads//2017//10//industry-media-entertainment.jpg',
+                                title='Ok then what would you like to do ?',
+                                text='Please select',
                                 actions=[
-                                   MessageTemplateAction(
-                                        label='Call a friend to hangout physically',
-                                        text='Calling a friend',
-                                        
+                                    URITemplateAction(
+                                        label='Watch some Movies',
+                                        uri='https://www.netflix.com//tw-en//'
                                     ),
                                     URITemplateAction(
-                                        label='Social Networking site',
-                                        uri='https://www.facebook.com/'
+                                        label='listen to music',
+                                        uri='https://www.youtube.com//watch?v=xNV38nq1fqc&t=1850s//'
                                     ),
                                     PostbackTemplateAction(
-                                        label='Please click on the camera option to hangout virtually',
-                                        text='Virtual Hangout',
+                                        label='Virtual hangout',
+                                        text='Please use the camera action in virtual more',
                                         data='action=buy&itemid=1'
-                                    )                             
+                                    )                          
                                                                              
                                 ]
                             )
