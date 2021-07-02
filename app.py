@@ -121,7 +121,8 @@ def handle_text_message(event):
                                     ),
                                     MessageTemplateAction(
                                         label='Not that great',
-                                        text='Sorry to hear that. Would you like to talk about it ? Answer in Yes/No '
+                                        text= 'Not great'
+                                        
                                     )
                                 ]
                             )
@@ -149,16 +150,33 @@ def handle_text_message(event):
     confirmmessage_great = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
-                                text= "Its good to hear that. You can spread your Happiness with others. Would you like to hangout with someone ?",
+                                text= "Sorry to hear that. Would you like to talk about it ?",
                                 actions=[
                                     PostbackTemplateAction(
                                         label='Yes',
-                                        text='I would surely like to hangout with others.',
+                                        text='Yes',
                                         data='action=buy&itemid=1'
                                     ),
                                     MessageTemplateAction(
                                         label='No',
-                                        text='Not right now'
+                                        text='No'
+                                    )
+                                ]
+                            )
+                        )
+    confirmmessage_notgreat = TemplateSendMessage(
+                            alt_text='Confirm template',
+                            template=ConfirmTemplate(
+                                text= "Its good to hear that. You can spread your Happiness with others. Would you like to hangout with someone ?",
+                                actions=[
+                                    PostbackTemplateAction(
+                                        label='Yes',
+                                        text='yes',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='No',
+                                        text='no'
                                     )
                                 ]
                             )
@@ -340,6 +358,8 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, bmessage)
     elif 'health' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
+    elif text == 'not great':
+        line_bot_api.reply_message(event.reply_token, confirmmessage_notgreat)
     elif text == 'yes':
         line_bot_api.reply_message(event.reply_token, confirmmessage_sick)
     elif text == 'sick':
