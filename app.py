@@ -353,47 +353,38 @@ def handle_text_message(event):
                                 ]
                             )
                         )
-    '''
+    
     message_carousel = TemplateSendMessage(
                             alt_text='Carousel template',
                             template=CarouselTemplate(
                                 columns=[
                                     CarouselColumn(
                                         thumbnail_image_url='https://dailyiowan.com/wp-content/uploads/2019/09/friends-900x600.jpeg',
-                                        title='Hangouts',
-                                        text='Want to hangout with a group or a solo person ..',
+                                        title='Fever',
+                                        text='Do you want medicine or doctor',
                                         actions=[
-                                            PostbackTemplateAction(
-                                                label='Group',
-                                                text='looking for a group..',
-                                                data='action=buy&itemid=1'
-                                            ),
+                                            
                                             MessageTemplateAction(
-                                                label='Solo',
-                                                text='looking for a person..'
+                                                label='Temperature',
+                                                text='Sensing your temperature'
                                             ),
                                             URITemplateAction(
-                                                label='Access facebooks',
+                                                label='Medicine and doctor',
                                                 uri='https://www.facebook.com/'
                                             )
                                         ]
                                     ),
                                     CarouselColumn(
                                         thumbnail_image_url='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-mobile-games-2020-1607968493.jpg',
-                                        title='Games',
-                                        text='Choose your online game',
+                                        title='Cold and cough',
+                                        text='Do you want medicine or doctor',
                                         actions=[
-                                            PostbackTemplateAction(
-                                                label='Chess',
-                                                text='opening chess',
-                                                data='action=buy&itemid=2'
-                                            ),
                                             MessageTemplateAction(
-                                                label='Online soccer',
-                                                text='opening FIFA'
+                                                label='Take temperature',
+                                                text='Sensing the temperature'
                                             ),
                                             URITemplateAction(
-                                                label='Sports News',
+                                                label='Medicine and doctor',
                                                 uri='https://www.skysports.com/'
                                             )
                                         ]
@@ -401,8 +392,8 @@ def handle_text_message(event):
                                     
                                  CarouselColumn(
                                         thumbnail_image_url='https://vgywm.com/wp-content/uploads/2019/07/apple-music-note-800x420.jpg',
-                                        title='Music',
-                                        text='Choose your own music',
+                                        title='Others',
+                                        text='Enjoy your disease',
                                         actions=[
                                             URITemplateAction(
                                                 label='Rock Music',
@@ -421,7 +412,7 @@ def handle_text_message(event):
                                 ]
                             )
                         )
-    '''
+    
     ImageCarouselmeddoc = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
                                 template=ImageCarouselTemplate(
@@ -599,7 +590,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
     
     elif text == 'sick' :
-        line_bot_api.reply_message(event.reply_token, message_sick)
+        line_bot_api.reply_message(event.reply_token, message_carousel)
     elif text == 'stressed' :
         line_bot_api.reply_message(event.reply_token, message_stressed)
     elif text == 'not stressed':
