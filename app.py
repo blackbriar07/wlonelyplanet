@@ -590,7 +590,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
     
     elif text == 'sick' :
-        line_bot_api.reply_message(event.reply_token, message_carousel)
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
     elif text == 'stressed' :
         line_bot_api.reply_message(event.reply_token, message_stressed)
     elif text == 'not stressed':
