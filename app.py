@@ -307,8 +307,8 @@ def handle_text_message(event):
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
                                 thumbnail_image_url='https://www.e-spincorp.com//wp-content//uploads//2017//10//industry-media-entertainment.jpg',
-                                title='What would you like to do ? ..',
-                                text='That is Awesome. Please select',
+                                title='Ok then what would you like to do ?',
+                                text='Please select',
                                 actions=[
                                     URITemplateAction(
                                         label='Watch some Movies',
@@ -335,11 +335,11 @@ def handle_text_message(event):
                                 title='You can socialize physically or virtually. please select',
                                 text='That is Awesome. Please select',
                                 actions=[
-                                   #MessageTemplateAction(
-                                    #    label='Call a friend to hangout physically',
-                                    #    text='Calling a friend',
+                                   MessageTemplateAction(
+                                        label='Call a friend to hangout physically',
+                                        text='Calling a friend',
                                         
-                                    #),
+                                    ),
                                     URITemplateAction(
                                         label='Social Networking site',
                                         uri='https://www.facebook.com/'
@@ -597,14 +597,17 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage_sick)
     elif text == 'not sick':
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
+    
     elif text == 'sick' :
         line_bot_api.reply_message(event.reply_token, message_sick)
     elif text == 'stressed' :
         line_bot_api.reply_message(event.reply_token, message_stressed)
     elif text == 'not stressed':
         line_bot_api.reply_message(event.reply_token, confirmmessage_lonely)
+    
     elif text == 'lonely':
         line_bot_api.reply_message(event.reply_token, message_lonely)
+   
     elif 'hangout' in text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Please click the virtual camera option to virtually meet friends"))
     elif 'bye' in text:
@@ -617,6 +620,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     elif 'surely' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
+    
     elif text == 'reminder':
         output = FlexSendMessage(alt_text='reminder',
                 contents ={
@@ -878,6 +882,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
+  
  
 
         
