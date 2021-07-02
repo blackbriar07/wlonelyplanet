@@ -109,6 +109,27 @@ def handle_text_message(event):
                                     ]
                                 )
                             )
+    ImageCarouselmeddoc = TemplateSendMessage(
+                                alt_text='ImageCarousel template',
+                                template=ImageCarouselTemplate(
+                                    columns=[
+                                        ImageCarouselColumn(
+                                            image_url='https://ichef.bbci.co.uk/news/976/cpsprodpb/15DA3/production/_115370598_tv038457905.jpg',
+                                            action=URITemplateAction(
+                                                    label='Medicine',
+                                                    uri='https://www.medlife.com/'
+                                            )
+                                        ),
+                                        ImageCarouselColumn(
+                                            image_url='https://bralowmedicalgroup.com/wp-content/uploads/2018/06/blog.jpg',
+                                            action=URITemplateAction(
+                                                    label='Doctor',
+                                                    uri='https://mdlnext.mdlive.com/'
+                                            )
+                                        )
+                                    ]
+                                )
+                            )
     confirmmessage = TemplateSendMessage(
                             alt_text='Confirm template',
                             template=ConfirmTemplate(
@@ -362,9 +383,11 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, confirmmessage_notgreat)
     elif text == 'yes':
         line_bot_api.reply_message(event.reply_token, confirmmessage_sick)
-    elif text == 'sick':
+    elif text == 'not sick':
         line_bot_api.reply_message(event.reply_token, confirmmessage_stressed)
-    elif text == 'stressed':
+    elif text == 'sick' :
+        line_bot_api.reply_message(event.reply_token, ImageCarouselmeddoc)
+    elif text == 'stressed' or text == 'not stressed':
         line_bot_api.reply_message(event.reply_token, confirmmessage_lonely)
     elif 'hangout' in text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Please click the virtual camera option to virtually meet friends"))
