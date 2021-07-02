@@ -57,10 +57,7 @@ def handle_text_message(event):
                     uri='https://engineering.linecorp.com/zh-hant/blog/')
             )
         ])
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text, quick_reply=quick_reply)
-    )
+    
     
     ImageCarouselmessage = TemplateSendMessage(
                                 alt_text='ImageCarousel template',
@@ -572,10 +569,15 @@ def handle_text_message(event):
                             )
                         )
     '''
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text = event.message.text, quick_reply=quick_reply))
+    #line_bot_api.reply_message(event.reply_token,TextSendMessage(text = event.message.text, quick_reply=quick_reply))
     
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
+    elif text == 'quick':
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text, quick_reply=quick_reply)
+    )
     elif 'feeling' in text and 'great' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage_great)
         #line_bot_api.reply_message(event.reply_token, bmessage)
@@ -617,6 +619,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage)
     else :
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "I am not being trained to understand you"))
+ 
 
         
 @handler.add(MessageEvent, message=LocationMessage)
