@@ -281,10 +281,12 @@ def handle_text_message(event):
     elif 'great' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage_great)
         #line_bot_api.reply_message(event.reply_token, bmessage)
-    elif 'right' in text:
+    elif 'Not' in text:
         line_bot_api.reply_message(event.reply_token, bmessage)
     elif 'Health' in text:
         line_bot_api.reply_message(event.reply_token, ImageCarouselmessage_health)
+    elif 'hangout' in text:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Please click the virtual camera option to virtually meet friends"))
     elif 'low' in text:
         line_bot_api.reply_message(event.reply_token, confirmmessage1)
     elif 'bye' in text:
