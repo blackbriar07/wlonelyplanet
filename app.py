@@ -8,6 +8,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from linebot.models import FlexSendMessage
+
 app = Flask(__name__)
 
 # Channel Access Token
