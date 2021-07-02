@@ -304,26 +304,69 @@ def handle_text_message(event):
                             )
                         )
     message_stressed = TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                thumbnail_image_url='https://www.e-spincorp.com//wp-content//uploads//2017//10//industry-media-entertainment.jpg',
-                                title='Ok then what would you like to do ?',
-                                text='Please select',
-                                actions=[
-                                    URITemplateAction(
-                                        label='Watch some Movies',
-                                        uri='https://www.netflix.com//tw-en//'
+                            alt_text='Carousel template',
+                            template=CarouselTemplate(
+                                columns=[
+                                    CarouselColumn(
+                                        thumbnail_image_url='https://dailyiowan.com/wp-content/uploads/2019/09/friends-900x600.jpeg',
+                                        title='Hangouts',
+                                        text='Want to hangout with a group or a solo person ..',
+                                        actions=[
+                                            PostbackTemplateAction(
+                                                label='virtual hangout',
+                                                text='Please click the camera option for virtual hangout',
+                                                data='action=buy&itemid=1'
+                                            ),
+                                            MessageTemplateAction(
+                                                label='Solo',
+                                                text='Calling a friend'
+                                            ),
+                                            URITemplateAction(
+                                                label='Access facebooks',
+                                                uri='https://www.facebook.com/'
+                                            )
+                                        ]
                                     ),
-                                    URITemplateAction(
-                                        label='listen to music',
-                                        uri='https://www.youtube.com//watch?v=xNV38nq1fqc&t=1850s//'
+                                    CarouselColumn(
+                                        thumbnail_image_url='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-mobile-games-2020-1607968493.jpg',
+                                        title='Games',
+                                        text='Choose your online game',
+                                        actions=[
+                                            PostbackTemplateAction(
+                                                label='Chess',
+                                                text='opening chess',
+                                                data='action=buy&itemid=2'
+                                            ),
+                                            MessageTemplateAction(
+                                                label='Online soccer',
+                                                text='opening FIFA'
+                                            ),
+                                            URITemplateAction(
+                                                label='Sports News',
+                                                uri='https://www.skysports.com/'
+                                            )
+                                        ]
                                     ),
-                                    PostbackTemplateAction(
-                                        label='Reminder Alert',
-                                        text='reminder',
-                                        data='action=buy&itemid=1'
-                                    )                          
-                                                                             
+                                    
+                                 CarouselColumn(
+                                        thumbnail_image_url='https://vgywm.com/wp-content/uploads/2019/07/apple-music-note-800x420.jpg',
+                                        title='Music',
+                                        text='Choose your own music',
+                                        actions=[
+                                            URITemplateAction(
+                                                label='Rock Music',
+                                                uri='https://www.youtube.com/watch?v=26nsBfLXwSQ/'
+                                            ),
+                                           URITemplateAction(
+                                                label='Contemporary Music',
+                                                uri='https://www.youtube.com/watch?v=M6USc22nFnY/'
+                                            ),
+                                            URITemplateAction(
+                                                label='Soothing Music',
+                                                uri='https://www.youtube.com/watch?v=lFcSrYw-ARY/'
+                                            )
+                                        ]
+                                 )
                                 ]
                             )
                         )
