@@ -434,7 +434,7 @@ def handle_text_message(event):
                                             ),
                                             URITemplateAction(
                                                 label='Medicine online',
-                                                uri='https://www.netmeds.com/prescriptions/dolo-650mg-tablet-15-s'
+                                                uri='https://www.netmeds.com/prescriptions/dolo-650mg-tablet-15-s/'
                                             ),
                                             URITemplateAction(
                                                 label='Consult a doctor',
@@ -454,7 +454,7 @@ def handle_text_message(event):
                                             ),
                                             URITemplateAction(
                                                 label='Medicine online',
-                                                uri='https://www.netmeds.com/prescriptions/cold-nova-capsule-10-s'
+                                                uri='https://www.netmeds.com/prescriptions/cold-nova-capsule-10-s/'
                                             ),
                                             URITemplateAction(
                                                 label='Consult a doctor',
