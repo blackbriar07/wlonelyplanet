@@ -301,6 +301,31 @@ def handle_text_message(event):
                                 ]
                             )
                         )
+    message_lonely = TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                thumbnail_image_url='https://www.relocationsrs.com.mx/wp-content/uploads/2019/11/blog3-720x340.jpg',
+                                title='You can socialize physically or virtually. please select',
+                                text='That is Awesome. Please select',
+                                actions=[
+                                   PostbackTemplateAction(
+                                        label='Call a friend to hangout physically',
+                                        text='Calling a friend',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    URITemplateAction(
+                                        label='Social Networking site',
+                                        uri='https://www.facebook.com/'
+                                    ),
+                                    PostbackTemplateAction(
+                                        label='Please click on the camera option to hangout virtually',
+                                        text='Virtual Hangout',
+                                        data='action=buy&itemid=1'
+                                    )                             
+                                                                             
+                                ]
+                            )
+                        )
    
     message_carousel = TemplateSendMessage(
                             alt_text='Carousel template',
@@ -481,6 +506,8 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, message_stressed)
     elif text == 'not stressed':
         line_bot_api.reply_message(event.reply_token, confirmmessage_lonely)
+    elif text == 'lonely':
+        line_bot_api.reply_message(event.reply_token, message_lonely)
     elif 'hangout' in text:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "Please click the virtual camera option to virtually meet friends"))
     elif 'bye' in text:
