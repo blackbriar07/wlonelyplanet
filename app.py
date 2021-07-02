@@ -555,7 +555,7 @@ def handle_text_message(event):
                             )
                         )
     '''
-    
+    line_bot_api.reply_message(text = event.message.text, quick_reply=quick_reply)
     if 'hi' in text or 'hello' in text :
         line_bot_api.reply_message(event.reply_token, confirmmessage)
     elif 'great' in text:
